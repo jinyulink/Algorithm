@@ -9,15 +9,17 @@
 using namespace std;
 const ll maxn = 1e3+10;
 ll t,w,h,k,q,a,b,c,d; // w,h 1000 | k 10000
-ll dp[maxn][maxn],block[maxn][maxn];
+ll path[maxn][maxn],block[maxn][maxn];
 void init()
 {
-    memset(dp,0,sizeof dp);
+    memset(path,0,sizeof path);
     memset(block,0,sizeof block);
 }
 int main()
 {
-    IO;
+    freopen("testcase.in", "r" , stdin);
+    freopen("output.txt", "w", stdout);
+    // IO;
     t=1;
     while(t--)
     {
@@ -34,33 +36,34 @@ int main()
                 else if(b!=d)
                     block[max(a,c)][max(b,d)]+=2; //代表y
             }
-            dp[0][0]=1;
+            path[0][0]=1;
             for(int i=1;i<=w;i++)
             {
-                if(block[i][0]) dp[i][0]=0;
-                else    dp[i][0]=dp[i-1][0];
+                if(block[i][0]) path[i][0]=0;
+                else    path[i][0]=path[i-1][0];
             }
             for(int i=1;i<=h;i++)
             {
-                if(block[0][i]) dp[0][i]=0;
-                else    dp[0][i]=dp[0][i-1];
+                if(block[0][i]) path[0][i]=0;
+                else    path[0][i]=path[0][i-1];
             }
             for(int i=1;i<=w;i++)
             {
                 for(int j=1;j<=h;j++)
                 {
                     if(block[i][j]==3)
-                        dp[i][j]=0;
+                        path[i][j]=0;
                     else if(block[i][j]==1)
-                        dp[i][j]=dp[i][j-1]%MOD;
+                        path[i][j]=path[i][j-1]%MOD;
                     else if(block[i][j]==2)
-                        dp[i][j]=dp[i-1][j]%MOD;
+                        path[i][j]=path[i-1][j]%MOD;
                     else
-                        dp[i][j]=(dp[i-1][j]+dp[i][j-1])%MOD;
+                        path[i][j]=(path[i-1][j]+path[i][j-1])%MOD;
                 }
             }
-            cout<<dp[w][h]<<'\n';
+            cout<<path[w][h]<<'\n';
         }
     }
+    cout <<(double)clock() / CLOCKS_PER_SEC;
     return 0;
 }

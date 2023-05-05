@@ -28,7 +28,9 @@ ll path(ll i)
 }
 int main()
 {
-    IO;
+    freopen("testcase.in", "r" , stdin);
+    freopen("output1.txt", "w", stdout);
+    // IO;
     t=1;
     while(t--)
     {
@@ -69,12 +71,13 @@ int main()
             // cout<<path(q)%MOD<<'\n';
             for(int i=0;i<=q;i++){
                 dp[i]=path(i);
-                dp[i]+=2552;
                 dp[i]%=2552;
+                dp[i]+=2552;
                 // cout<<dp[i]%2552<<' ';
             }
             cout<<dp[q]<<'\n';
         }
     }
+    cout <<(double)clock() / CLOCKS_PER_SEC;
     return 0;
 }
