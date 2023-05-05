@@ -78,6 +78,6 @@ int main()
             cout<<dp[q]<<'\n';
         }
     }
-    cout <<(double)clock() / CLOCKS_PER_SEC;
+    cout <<(double)clock() / CLOCKS_PER_SEC<<'\n';
     return 0;
 }

@@ -64,6 +64,6 @@ int main()
             cout<<path[w][h]<<'\n';
         }
     }
-    cout <<(double)clock() / CLOCKS_PER_SEC;
+    cout <<(double)clock() / CLOCKS_PER_SEC<<'\n';
     return 0;
 }

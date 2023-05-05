@@ -14,18 +14,21 @@ import matplotlib.pyplot as plt
 os.system("g++ KHW.cpp -o khw") # compile
 os.system("g++ dp2.cpp -o dp2") # compile
 
+open('output.txt', 'w').close()
+open('output1.txt', 'w').close()
+
 khw_graph = []
 dp_graph = []
 
 H = 1000
 W = 1000
-k = 10000
+k = 100
 for K in range(k,k+1):
     print(K)
     f = open("testcase.in", "w")
     f.write(f"{H} {W} {K}\n")
     for i in range(K):
-        num = random.randint(1, 100)
+        num = 100
         f.write(f"{num} ")
         for j in range(num):
             VorH = random.randint(0, 1)  # 0: vertical, 1: horizontal
@@ -38,8 +41,8 @@ for K in range(k,k+1):
                 y = random.randint(0, W)
                 f.write(f"{y} {x} {y} {x+1} ")
         f.write("\n")
-    os.popen("./khw &") # run https://blog.csdn.net/Mr_Li1/article/details/89353276
-    os.popen("./dp2 &") # run
+    os.system("./khw &") # run https://blog.csdn.net/Mr_Li1/article/details/89353276
+    os.system("./dp2 &") # run
     # with open('output.txt', 'r') as f:
         # khw_time = f.readlines()[-1]
     # with open('output1.txt', 'r') as f:
