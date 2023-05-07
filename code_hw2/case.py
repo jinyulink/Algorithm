@@ -22,7 +22,7 @@ dp_graph = []
 
 H = 1000
 W = 1000
-k = 100
+k = 1000
 for K in range(k,k+1):
     print(K)
     f = open("testcase.in", "w")
@@ -50,10 +50,10 @@ for K in range(k,k+1):
     # khw_graph.append(khw_time)
     # dp_graph.append(dp_time)
     
-x = np.arange(1,k+1,1)
-plt.plot(x, khw_graph, label='KHW')
-plt.plot(x, dp_graph, label='dp')
-plt.legend()
+# x = np.arange(1,k+1,1)
+# plt.plot(x, khw_graph, label='KHW')
+# plt.plot(x, dp_graph, label='dp')
+# plt.legend()
 
-plt.show()
-plt.savefig('foo.png')
+# plt.show()
+# plt.savefig('foo.png')
