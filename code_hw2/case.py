@@ -22,7 +22,7 @@ dp_graph = []
 
 H = 1000
 W = 1000
-k = 1000
+k = 100
 for K in range(k,k+1):
     print(K)
     f = open("testcase.in", "w")
