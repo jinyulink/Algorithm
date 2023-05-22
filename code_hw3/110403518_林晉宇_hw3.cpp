@@ -5,6 +5,7 @@
 #define F first
 #define S second
 using namespace std;
+int cnt=0;
 int k,n; // cache size / n request sequence
 void init(vector<int>& rs, vector<int>& record, int n)
 {
@@ -17,7 +18,7 @@ void init(vector<int>& rs, vector<int>& record, int n)
     {
         if(!hash[rs[i]])    
         {
-            record[i] = INF;
+            record[i] = INF + (cnt++);
         }
         else
         {
@@ -29,8 +30,8 @@ void init(vector<int>& rs, vector<int>& record, int n)
 int main()
 {
     IO;
-    freopen("testcase.in", "r" , stdin);
-    freopen("output2.txt", "a", stdout);
+    // freopen("testcase.in", "r" , stdin);
+    // freopen("output2.txt", "a", stdout);
     cin>>k>>n;
     vector<int> rs(n+1,0), record(n+1,0);
     init(rs,record,n); //輸入及建立record表
@@ -42,7 +43,7 @@ int main()
     {
         if(cache[rs[i]]) // cache hit;
         {
-            // cout<<"hit\n";
+            cout<<"hit\n";
             pq.push({record[i], rs[i]});
         }
         else if(cur_cache_size < k) // cache miss;
@@ -50,7 +51,7 @@ int main()
             cur_cache_size++;
             cache[rs[i]] = true;
             pq.push({record[i], rs[i]});
-            // cout<<"miss\n";
+            cout<<"miss\n";
         }
         else // cache miss -> evicted;
         {
@@ -63,7 +64,7 @@ int main()
             int ev = t.S; // 要被丟掉的值
             cache[rs[i]] = 1;
             pq.push({record[i], rs[i]});
-            // cout<<"miss\nevict "<<ev<<'\n';
+            cout<<"miss\nevict "<<ev<<'\n';
         }
     }
     cout <<(double)clock() / CLOCKS_PER_SEC<<'\n';

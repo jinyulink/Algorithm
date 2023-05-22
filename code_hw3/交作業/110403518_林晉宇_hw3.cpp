@@ -5,6 +5,7 @@
 #define F first
 #define S second
 using namespace std;
+int cnt=0;
 int k,n; // cache size / n request sequence
 void init(vector<int>& rs, vector<int>& record, int n)
 {
@@ -17,7 +18,7 @@ void init(vector<int>& rs, vector<int>& record, int n)
     {
         if(!hash[rs[i]])    
         {
-            record[i] = INF;
+            record[i] = INF + (cnt++);
         }
         else
         {
