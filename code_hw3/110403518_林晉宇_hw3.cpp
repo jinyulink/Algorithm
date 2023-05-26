@@ -30,8 +30,8 @@ void init(vector<int>& rs, vector<int>& record, int n)
 int main()
 {
     IO;
-    // freopen("testcase.in", "r" , stdin);
-    // freopen("output2.txt", "a", stdout);
+    freopen("testcase.in", "r" , stdin);
+    freopen("output2.txt", "a", stdout);
     cin>>k>>n;
     vector<int> rs(n+1,0), record(n+1,0);
     init(rs,record,n); //輸入及建立record表
@@ -41,9 +41,10 @@ int main()
     priority_queue<pii> pq;
     for(int i=1; i<=n; i++)
     {
+        // cout << rs[i] << ' ' << cur_cache_size << '\n';
         if(cache[rs[i]]) // cache hit;
         {
-            cout<<"hit\n";
+            // cout<<"hit\n";
             pq.push({record[i], rs[i]});
         }
         else if(cur_cache_size < k) // cache miss;
@@ -51,7 +52,7 @@ int main()
             cur_cache_size++;
             cache[rs[i]] = true;
             pq.push({record[i], rs[i]});
-            cout<<"miss\n";
+            // cout<<"miss\n";
         }
         else // cache miss -> evicted;
         {
@@ -62,9 +63,10 @@ int main()
                 t = pq.top();
             }
             int ev = t.S; // 要被丟掉的值
+            pq.pop();
             cache[rs[i]] = 1;
             pq.push({record[i], rs[i]});
-            cout<<"miss\nevict "<<ev<<'\n';
+            // cout<<"miss, evict "<<ev<<'\n';
         }
     }
     cout <<(double)clock() / CLOCKS_PER_SEC<<'\n';
