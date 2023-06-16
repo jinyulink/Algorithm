@@ -77,6 +77,6 @@ int main()
         cout<<path_flow<<'\n';
     }
     cout<<max_flow<<'\n';
-    cout <<(double)clock() / CLOCKS_PER_SEC<<'\n';
+    cout <<(double)clock()<<'\n';
     return 0;
 }
