@@ -47,6 +47,7 @@ int main()
         cin>>u>>v>>w;
         G[u][v] = w;
     }
+    double START,END; START = clock();
     while(bfs(s, t))
     {
         int path_flow = INF;
@@ -68,6 +69,9 @@ int main()
         cout<<path_flow<<'\n';
     }
     cout<<max_flow<<'\n';
-    cout <<(double)clock()<<'\n';
+    END = clock();
+    cout << (END - START) / CLOCKS_PER_SEC << endl;
+    cout<<START<<' ';
+    cout<<END<<'\n';
     return 0;
 }

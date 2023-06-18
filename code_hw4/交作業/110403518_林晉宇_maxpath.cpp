@@ -47,8 +47,8 @@ bool bfs(int s, int t)
 int main()
 {
     IO;
-    freopen("testcase.in", "r" , stdin);
-    freopen("output_ff.txt", "a", stdout);
+    // freopen("testcase.in", "r" , stdin);
+    // freopen("output_ff.txt", "a", stdout);
     cin>>n>>s>>t>>c;
     for(int i = 0; i < c; i++)
     {
@@ -77,10 +77,10 @@ int main()
         max_flow += path_flow;
         cout<<path_flow<<'\n';
     }
-    END = clock();
+    // END = clock();
     cout<<max_flow<<'\n';
-    cout << (END - START) / CLOCKS_PER_SEC << endl;
-    cout<<START<<' ';
-    cout<<END<<'\n';
+    // cout << (END - START) / CLOCKS_PER_SEC << endl;
+    // cout<<START<<' ';
+    // cout<<END<<'\n';
     return 0;
 }
